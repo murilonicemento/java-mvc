@@ -1,0 +1,5 @@
+unesa\clienterest\ClienteREST.class
+unesa\clienterest\InterceptadorLogin.class
+unesa\clienterest\GestorServico.class
+unesa\data\Produto.class
+unesa\retrofit\ProdutoService.class

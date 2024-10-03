@@ -1,0 +1,4 @@
+unesa\MeuTesteOAuthApp.class
+unesa\security\LoginController.class
+unesa\controller\GeneralController.class
+unesa\security\SecurityConfig.class
