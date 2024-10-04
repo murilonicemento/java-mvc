@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemplo010</title><meta charset="UTF-8">
+    <script src="exemploLib.js"></script>
+  </head>
+  <body>
+    <div style="float:left; width:200px">
+    <h4>Fatoriais de 3 a 8</h4>
+    <ul><script>
+      var i = 3;
+      while(i<=8){
+        document.writeln("<li>Fat("+i+") = "+fatorial(i)+"</li>");
+        i++;
+      }
+    </script></ul>
+    </div>
+    <div style="float:left; width:200px">
+    <h4>Primos entre 50 e 75</h4>
+    <ul><script>
+      for(i=50;i<=75;i++)
+        if(ePrimo(i)) document.writeln("<li>"+i+"</li>");
+    </script></ul>
+    </div>
+  </body>
+</html>

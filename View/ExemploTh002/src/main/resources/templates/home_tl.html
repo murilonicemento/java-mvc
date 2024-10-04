@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Página Inicial</title>
+   <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.2/css/bootstrap.min.css} "/>
+   <script th:src="@{/webjars/bootstrap/5.0.2/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Estilos de Botões</h2>
+  <button type="button" class="btn">Básico</button>
+  <button type="button" class="btn btn-default">Padrão</button>
+  <button type="button" class="btn btn-primary">Primário</button>
+  <button type="button" class="btn btn-success">Sucesso</button>
+  <button type="button" class="btn btn-info">Informação</button>
+  <button type="button" class="btn btn-warning">Aviso</button>
+  <button type="button" class="btn btn-danger">Perigo</button>
+  <button type="button" class="btn btn-link">Link</button>      
+</div>
+
+    <h1 th:text="#{main.titulo}"}>Departamentos</h1>
+    <ul>
+    <li th:each="departamento : ${departamentos}"
+        th:text="${departamento}">valor</li>
+    </ul>
+    <p>
+    Página gerada em <span th:text="${data}">valor</span>
+    </p>
+</body>
+</html>

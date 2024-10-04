@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exemplo013</title>
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.theme.css">
+        <script src="jquery-ui/external/jquery/jquery.js"></script>
+        <script src="jquery-ui/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                var dlgTarefa = $("#dlgTarefa").dialog({
+                    autoOpen: false, height: 200, width: 350,
+                    modal: true,
+                    buttons: {
+                        "Criar Tarefa": criarTarefa,
+                        "Cancelar": function () {
+                            dlgTarefa.dialog("close");
+                        }
+                    },
+                    close: function () {
+                        $("#edtTarefa").val("");
+                    }
+                });
+
+                dlgTarefa.find("form").on("submit", function (event) {
+                    event.preventDefault();
+                    criarTarefa();
+                });
+
+                function criarTarefa() {
+                    $("#listaTarefas").append(
+                            "<li class='ui-state-default' "+
+                            " style='padding:5px;margin:5px'>" + 
+                            $("#edtTarefa").val() + "</li>");
+                    dlgTarefa.dialog("close");
+                }
+
+                $("#btnDialogo").button().on("click", function () {
+                    dlgTarefa.dialog("open");
+                });
+                
+                $("#listaTarefas").sortable();
+
+            });
+        </script>
+    </head>
+    <body>
+        <h3>Tarefas</h3>
+        <ul id="listaTarefas" class="ui-menu"></ul>
+        <div id="dlgTarefa" title="Definição de Tarefa">
+            <form>
+                <fieldset>
+                    <label for="edtTarefa">Tarefa</label>
+                    <input type="text" name="edtTarefa" id="edtTarefa" 
+                           class="ui-widget-content ui-corner-all">
+                </fieldset>
+            </form>            
+        </div>
+        <p>
+        <button id="btnDialogo">Abrir Dialogo</button>
+        </p>
+    </body>
+</html>

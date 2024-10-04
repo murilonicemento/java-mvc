@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplo011</title><meta charset="UTF-8">
+    </head>
+    <body>
+        <input type="text" id="edtNome"/>  
+        <button onclick="mostraMensagem()">Clique Aqui</button>
+        <script>
+            var cliente = {nome: "Ana",
+                endereco: "Rua dos Marrecos, 33",
+                rg: 12748791,
+                ativo: true};
+
+            function mostraMensagem() {
+                var nome = document.getElementById("edtNome").value;
+                alert("Bem-vindo " + nome);
+            }
+        </script>
+    </body>
+</html>

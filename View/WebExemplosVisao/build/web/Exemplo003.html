@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemplo003</title><meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <form action="http://lugarnenhum.com" method="post">
+      <fieldset>
+        <legend>Nome Completo</legend>
+        <label for="n1">Nome:</label><br/>
+        <input type="text" id="n1" name="nome"><br/>
+        <label for="n2">Sobrenome:</label><br/>
+        <input type="text" id="n2" name="sobren"><br/>
+      </fieldset><br/>
+      <input type="checkbox" name="aceite" value="sim"/>
+      Declaro aceitar todos os termos de uso do aplicativo.<br/><br/>
+      Cobrança:
+      <input list="c1" name="cobranca"/>
+      <datalist id="c1">
+        <option value="Mensal">
+        <option value="Trimestral">
+        <option value="Anual">
+      </datalist>
+      <input type="submit" value="Cadastrar"/>
+    </form>
+  </body>
+</html>

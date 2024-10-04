@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Departamentos</title>
+   <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.2/css/bootstrap.min.css} "/>
+   <script th:src="@{/webjars/bootstrap/5.0.2/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<div th:replace="~{menu :: menuprincipal (pagina='departamentos')}"></div>
+<div class="container">
+    <h1>Dados do Departamento</h1>
+	<form th:object="${depto}"
+          th:action="@{/departamentos/cadastro}"
+          method="post">
+       <input id="idDepto" type="hidden"
+              th:field="*{idDepto}"/>   
+       <div class="form-group">
+         <label for="nome" class="form-label">Nome</label>
+         <input id="nome" type="text" class="form-control"
+              th:field="*{nome}"/>
+       </div>
+       <br/>
+       <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>   
+</div>    
+</body>
+</html>

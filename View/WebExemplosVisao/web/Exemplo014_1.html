@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exemplo014</title>
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.theme.css">
+        <script src="jquery-ui/external/jquery/jquery.js"></script>
+        <script src="jquery-ui/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                var baseUrl = "https://www.metaweather.com/api/location/";
+
+                function adicionaLinha(item, index){
+                    $("#listaClima").append(
+                        "<li>"+item.applicable_date+": "+
+                        item.min_temp+" a "+item.max_temp+ 
+                        "graus ("+item.weather_state_name+")</li>");
+                }
+
+                function tratarDados(dadosJSON){
+                    dadosJSON.consolidated_weather.foreach(adicionaLinha);
+                }
+
+                $("#btnEnviar").button().on("click", function(){
+                    $("#listaClima").html("");
+                    var texto = $("#edtLocal").val();
+                    var localUrl = baseUrl + "search/?query=" + texto;
+                    $.ajax({url: localUrl, success: function(retorno){
+                        // Retorno no formato JSON
+                        // Campo woeid identifica registros
+                        var woeid = retorno.woeid;
+                        var meteoroUrl = baseUrl + woeid;
+                        $.ajax({url: meteoroUrl, success: function(retorno){
+                            tratarDados(retorno);
+                        }});
+                    }});
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h3>Meteorologia</h3>
+        <input type="text" id="edtLocal" placeholder="Digite o local"/>
+        <button id="btnEnviar">Pesquisar</button>
+        
+        <ul id="listaClima"></ul>
+    </body>
+</html>

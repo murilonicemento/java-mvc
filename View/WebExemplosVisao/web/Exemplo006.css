@@ -1,0 +1,8 @@
+div {text-align: center; font-size:40px; width:200px; height:150px}
+
+#camada1 {background-color: yellow; border-style: dotted; 
+          position: absolute; top:10px; left:10px}
+#camada2 {background-color: orange; border-style: dashed; 
+          position: absolute; top:110px; left:110px}
+#camada3 {background-color: gold; border-style: solid; 
+          position: absolute; top:210px; left:210px}

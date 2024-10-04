@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Funcionario</title>
+   <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.2/css/bootstrap.min.css} "/>
+   <script th:src="@{/webjars/bootstrap/5.0.2/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<div th:replace="~{menu :: menuprincipal (pagina='funcionarios')}"></div>
+<div class="container">
+    <h1>Dados do Funcionário</h1>
+	<form th:object="${funcionario}"
+          th:action="@{/funcionarios/cadastro}"
+          method="post">
+       <div class="form-group">       
+       <label for="matricula" class="form-label">Matricula</label>
+       <input id="matricula" type="text" class="form-control"
+              th:field="*{matricula}"/>
+       </div> 
+       <div class="form-group">       
+       <label for="nome" class="form-label">Nome</label>
+       <input id="nome" type="text" class="form-control"
+              th:field="*{nome}"/>
+       </div> 
+       <div class="form-group">       
+       <label for="departamento" class="form-label">Departamento</label>
+       <select id="departamento" th:field="*{departamento}" class="form-select">
+         <option th:each="depto: ${deptos}"
+                 th:value="${depto.idDepto}"
+                 th:text="${depto.nome}"/>
+        </select>
+		</div>
+		<br/>
+       <button type="submit" class="btn btn-primary">Cadastrar</button>          
+    </form>  
+</div> 
+</body>
+</html>

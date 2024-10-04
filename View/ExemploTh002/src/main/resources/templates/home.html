@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Página Inicial</title>
+   <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.2/css/bootstrap.min.css} "/>
+   <script th:src="@{/webjars/bootstrap/5.0.2/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<div th:replace="~{menu :: menuprincipal (pagina='')}"></div>
+<div class="container">
+   <div th:if="${mensagem != null}" class="alert alert-danger"
+        th:text="${mensagem}">
+   </div>
+</div>
+</body>
+</html>

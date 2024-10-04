@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Contatos</title>
+        <style>
+            a {
+                color: black
+            }
+            tr.odd td {
+                background-color: #f0faaa;
+            }
+            td, th {
+                padding: 2px 10px;
+                border-left: 1px dotted #000000;
+                vertical-align: top;
+                line-height: 20px;
+                background-color: #99cc33;
+            }
+
+            tr {
+                border-bottom: 1px solid #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="#" th:action="@{/app/contato/incluir}" 
+                         method="post">
+            <p>Nome:<br/><input name="nome" type="text"/></p>
+            <p>Telefone:<br/><input name="telefone" type="text"/></p>
+            <p><input type="submit" value="Incluir" /></p>
+        </form>
+        <table>
+            <thead>
+                <tr><th>Nome</th><th>Telefone</th><th>Opcoes</th></tr>
+            </thead>
+            <tbody th:remove="all-but-first">
+                <tr th:each="contato : ${listaContatos}" th:class="${contatoStat.odd}? 'odd'">
+                    <td th:text="${contato.nome}">Nome</td>
+                    <td th:text="${contato.telefone}">Telefone</td>
+                    <td>
+                        <a th:href="@{/app/contato/excluir(nome=${contato.nome})}">
+                            Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body> 
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exemplo014</title>
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.theme.css">
+        <script src="jquery-ui/external/jquery/jquery.js"></script>
+        <script src="jquery-ui/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                var baseUrl = "https://www.thecocktaildb.com/api/json/v1/1/";
+
+                function adicionaLinha(item, index){
+                    $("#listaDrinks").append(
+                        "<h3>"+item.strDrink+"</h3><div><p>"+
+                        "<img width='100' height='100' "+
+                        " style='float:left;margin-right:10px' "+
+                        " src='"+item.strDrinkThumb+"'/>"+
+                        item.strInstructions+"</p></div>");
+                }
+
+                function tratarDados(dadosJSON){
+                    if(dadosJSON.drinks)
+                        dadosJSON.drinks.forEach(adicionaLinha);
+                    $("#listaDrinks").accordion("refresh");
+                }
+
+                $("#btnEnviar").button().on("click", function(){
+                    $("#listaDrinks").html("");
+                    var texto = $("#edtNome").val();
+                    var localUrl = baseUrl + "search.php?s=" + texto;
+                    $.ajax({url: localUrl, success: function(retorno){
+                        // Retorno no formato JSON
+                        tratarDados(retorno);
+                   }});
+                });
+                
+                $("#listaDrinks").accordion();
+            });
+        </script>
+    </head>
+    <body>
+        <h3>Receitas para Drinks</h3>
+        <input type="text" id="edtNome" placeholder="Digite o nome"/>
+        <button id="btnEnviar">Pesquisar</button>
+        
+        <div id="listaDrinks"></div>
+    </body>
+</html>
